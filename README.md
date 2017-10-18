@@ -48,9 +48,12 @@ Based on the good recommendation from [Alex Shumilov](https://github.com/poprygu
        http://www.springframework.org/schema/context/spring-context.xsd"
        xmlns:cloud="http://schema.cloudfoundry.org/spring"
        xmlns:context="http://www.springframework.org/schema/context">
+
     <cloud:properties id="cloudProperties"/>
+
     <context:property-placeholder properties-ref="cloudProperties"/>
-    <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitPropertiesBean">
+
+    <bean id="rabbitPropertiesBean" class="com.anwar.RabbitPropertiesBean">
         <property name="rabbitHost" value="${cloud.services.myrabbit.connection.hostname}"/>
     </bean>
 </beans>

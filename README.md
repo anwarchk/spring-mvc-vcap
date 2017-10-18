@@ -14,7 +14,8 @@ Here is an example of how you can access the `VCAP_SERVICES` variables from `SPE
 
 In the example above, `myrabbit` is the service instance name that you would create from the service catalog.
 
-> You need a dependency on
+You need a dependency on:
+
 ```xml
 <dependency>
   <groupId>org.cloudfoundry</groupId>
@@ -22,6 +23,8 @@ In the example above, `myrabbit` is the service instance name that you would cre
   <version>0.8.1</version>
 </dependency>
 ```        
+
+to access the `CloudPropertiesFactoryBean` class
 
 As per [Alex Shumilov](https://github.com/poprygun), the following approach also would work, but I have not tested it personally. But when you add the `<cloud>` namespace, you lose the auto-re-configuration magic provided by the build pack.
 

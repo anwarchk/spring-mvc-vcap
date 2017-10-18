@@ -1,6 +1,7 @@
 package com.anwar;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,7 @@ public class PropertiesController {
     private RabbitPropertiesBean rabbitProperties;
 
     @Autowired(required = false)
+    @Qualifier("cloudProperties")
     private Properties cloudProperties;
 
     @GetMapping("/host")

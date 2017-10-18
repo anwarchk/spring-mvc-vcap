@@ -1,0 +1,7 @@
+---
+applications:
+- name: spring-mvc-vcap
+  memory: 1G
+  random-route: true
+  path: target/spring-mvc-vcap-1.0-SNAPSHOT.war
+  buildpack: java_buildpack_offline

@@ -2,9 +2,9 @@
 
 This is a sample app to demonstrate how you can access `VCAP_SERVICES` environment variables from a non Spring Boot application.
 
-## Using Spring Expression Language
+## Using Spring Expression Language (SPEL)
 
-Here is an example of how you can access the `VCAP_SERVICES` variables from `SPEL`
+Below are the options on how you can access the `VCAP_SERVICES` variables using `SPEL`
 
 > You need a dependency on:
 
@@ -17,9 +17,10 @@ Here is an example of how you can access the `VCAP_SERVICES` variables from `SPE
 ```
 
 
-to access the `CloudPropertiesFactoryBean` class
-
 #### Option 1:
+
+Using `CloudPropertiesFactoryBean` class
+
 
 ```xml
 <bean id="cloudProperties" class="org.cloudfoundry.runtime.env.CloudPropertiesFactoryBean"/>
@@ -33,6 +34,8 @@ In the example above, `myrabbit` is the service instance name that you would cre
 
 
 #### Option 2:
+
+Using the `<cloud>` namespace.
 
 Based on the good recommendation from [Alex Shumilov](https://github.com/poprygun), the following approach also works. When you add the `<cloud>` namespace, you might lose some of the auto-re-configuration magic provided by the build pack.
 

@@ -10,11 +10,12 @@ Here is an example of how you can access the `VCAP_SERVICES` variables from `SPE
 <bean id="cloudProperties" class="org.cloudfoundry.runtime.env.CloudPropertiesFactoryBean"/>
 <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitPropertiesBean">
     <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.hostname']}"/>
-</bean>```
+</bean>
+```
 
 In the example above, `myrabbit` is the service instance name that you would create from the service catalog.
 
-You need a dependency on:
+> You need a dependency on:
 
 ```xml
 <dependency>
@@ -22,7 +23,8 @@ You need a dependency on:
   <artifactId>cloudfoundry-runtime</artifactId>
   <version>0.8.1</version>
 </dependency>
-```        
+```
+
 
 to access the `CloudPropertiesFactoryBean` class
 

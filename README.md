@@ -32,7 +32,7 @@ Using `CloudPropertiesFactoryBean` class
 ```xml
 <bean id="cloudProperties" class="org.cloudfoundry.runtime.env.CloudPropertiesFactoryBean"/>
 <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitPropertiesBean">
-    <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.hostname']}"/>
+    <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.host']}"/>
 </bean>
 ```
 

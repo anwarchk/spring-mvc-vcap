@@ -20,8 +20,9 @@
     <import resource="application-context-cloud.xml"/>
 
     <beans profile="!cloud">
-        <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitPropertiesBean">
+        <bean id="rabbitPropertiesBean" class="com.anwar.RabbitProperties">
             <property name="rabbitHost" value="localhost"/>
+            <property name="rabbitPort" value="5672"/>
         </bean>
     </beans>
 

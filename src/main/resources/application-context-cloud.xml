@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans profile="cloud" xmlns="http://www.springframework.org/schema/beans"
+<beans profile="cloud"
+       xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cloud="http://www.springframework.org/schema/cloud"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-       http://schema.cloudfoundry.org/spring
-       http://schema.cloudfoundry.org/spring/cloudfoundry-spring.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd"
-       xmlns:cloud="http://schema.cloudfoundry.org/spring"
-       xmlns:context="http://www.springframework.org/schema/context">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/cloud
+       http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 
     <cloud:properties id="cloudProperties"/>
 
-    <context:property-placeholder properties-ref="cloudProperties"/>
-
-    <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitPropertiesBean">
-        <property name="rabbitHost" value="${cloud.services.myrabbit.connection.hostname}"/>
+    <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitProperties">
+        <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.host']}"/>
+        <property name="rabbitPort"
+                  value="#{cloudProperties['cloud.services.myrabbit.connection.port']}"/>
     </bean>
 
 </beans>

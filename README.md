@@ -9,11 +9,18 @@ Below are the options on how you can access the `VCAP_SERVICES` variables using 
 > You need a dependency on:
 
 ```xml
-<dependency>
-  <groupId>org.cloudfoundry</groupId>
-  <artifactId>cloudfoundry-runtime</artifactId>
-  <version>0.8.1</version>
-</dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+            <version>1.2.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+            <version>1.2.4.RELEASE</version>
+        </dependency>
+
 ```
 
 
@@ -37,27 +44,24 @@ In the example above, `myrabbit` is the service instance name that you would cre
 
 Using the `<cloud>` namespace.
 
-Based on the good recommendation from [Alex Shumilov](https://github.com/poprygun), the following approach also works. When you add the `<cloud>` namespace, you might lose some of the auto-re-configuration magic provided by the build pack.
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<beans profile="cloud" xmlns="http://www.springframework.org/schema/beans"
+<beans profile="cloud"
+       xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cloud="http://www.springframework.org/schema/cloud"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-       http://schema.cloudfoundry.org/spring
-       http://schema.cloudfoundry.org/spring/cloudfoundry-spring.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd"
-       xmlns:cloud="http://schema.cloudfoundry.org/spring"
-       xmlns:context="http://www.springframework.org/schema/context">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/cloud
+       http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 
     <cloud:properties id="cloudProperties"/>
 
-    <context:property-placeholder properties-ref="cloudProperties"/>
-
-    <bean id="rabbitPropertiesBean" class="com.anwar.RabbitPropertiesBean">
-        <property name="rabbitHost" value="${cloud.services.myrabbit.connection.hostname}"/>
+    <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitProperties">
+        <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.host']}"/>
     </bean>
+
 </beans>
 ```  
+> There is an issue in getting the right `rabbit` port value using`cloud.services.myrabbit.connection.port`, which returns `-1`, instead of the `5672`. 
+  Please see the Github issue here : https://github.com/spring-cloud/spring-cloud-connectors/issues/214 

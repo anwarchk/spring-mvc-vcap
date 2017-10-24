@@ -4,7 +4,7 @@ This is a sample app to demonstrate how you can access `VCAP_SERVICES` environme
 
 ## Using Spring Expression Language (SPEL)
 
-Below are the options on how you can access the `VCAP_SERVICES` variables using `SPEL`
+Here is how you can access the `VCAP_SERVICES` variables using `SPEL`
 
 > You need a dependency on:
 
@@ -22,27 +22,6 @@ Below are the options on how you can access the `VCAP_SERVICES` variables using 
         </dependency>
 
 ```
-
-
-#### Option 1:
-
-Using `CloudPropertiesFactoryBean` class
-
-
-```xml
-<bean id="cloudProperties" class="org.cloudfoundry.runtime.env.CloudPropertiesFactoryBean"/>
-<bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitPropertiesBean">
-    <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.host']}"/>
-</bean>
-```
-
-In the example above, `myrabbit` is the service instance name that you would create from the service catalog.
-
-
-
-#### Option 2:
-
-Using the `<cloud>` namespace.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -63,5 +42,5 @@ Using the `<cloud>` namespace.
 
 </beans>
 ```  
-> There is an issue in getting the right `rabbit` port value using`cloud.services.myrabbit.connection.port`, which returns `-1`, instead of the `5672`. 
-  Please see the Github issue here : https://github.com/spring-cloud/spring-cloud-connectors/issues/214 
+> There is an issue in getting the right `rabbit` port value using`cloud.services.myrabbit.connection.port`, which returns `-1`, instead of the `5672`.
+  Please see the Github issue here : https://github.com/spring-cloud/spring-cloud-connectors/issues/214

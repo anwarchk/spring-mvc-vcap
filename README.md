@@ -4,22 +4,36 @@ This is a sample app to demonstrate how you can access `VCAP_SERVICES` environme
 
 ## Using Spring Expression Language (SPEL)
 
-Here is how you can access the `VCAP_SERVICES` variables using `SPEL`
+Here is how you can access the `VCAP_SERVICES` properties using `SPEL`
 
-> You need a dependency on:
+Repos and dependency for this example:
 
 ```xml
+    <repositories>
+        <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
+        <repository>
+            <id>org.springframework.maven.snapshot</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://repo.spring.io/libs-snapshot-local</url>
+        </repository>
+    </repositories>
+
+     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>1.2.4.RELEASE</version>
+            <version>1.2.5.BUILD-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-spring-service-connector</artifactId>
             <version>1.2.4.RELEASE</version>
         </dependency>
+     </dependencies>
 
 ```
 

@@ -36,11 +36,9 @@ Here is how you can access the `VCAP_SERVICES` variables using `SPEL`
 
     <cloud:properties id="cloudProperties"/>
 
-    <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitProperties">
+    <bean id="rabbitPropertiesBean" class="com.anwar.RabbitProperties">
         <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.host']}"/>
+        <property name="rabbitPort" value="#{cloudProperties['cloud.services.myrabbit.connection.port']}"/>
     </bean>
-
 </beans>
 ```  
-> There is an issue in getting the right `rabbit` port value using`cloud.services.myrabbit.connection.port`, which returns `-1`, instead of the `5672`.
-  Please see the Github issue here : https://github.com/spring-cloud/spring-cloud-connectors/issues/214

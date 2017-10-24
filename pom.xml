@@ -22,6 +22,11 @@
             <name>Spring Framework Maven Milestone Repository</name>
             <url>http://maven.springframework.org/milestone</url>
         </repository>
+        <repository>
+            <id>org.springframework.maven.snapshot</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://repo.spring.io/libs-snapshot-local</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -49,7 +54,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>1.2.4.RELEASE</version>
+            <version>1.2.5.BUILD-SNAPSHOT</version>
         </dependency>
 
         <dependency>

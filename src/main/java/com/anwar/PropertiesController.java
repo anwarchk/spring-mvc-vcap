@@ -30,7 +30,7 @@ public class PropertiesController {
     @GetMapping("/properties")
     public String cloudProperties() {
         StringBuilder sb = new StringBuilder("{\n");
-        for (Map.Entry entry : cloudProperties.entrySet()) {
+        for (Map.Entry<Object, Object> entry : cloudProperties.entrySet()) {
             if (sb.length() > 5) {
                 sb.append(",");
             }

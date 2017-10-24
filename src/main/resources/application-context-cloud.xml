@@ -10,9 +10,8 @@
 
     <cloud:properties id="cloudProperties"/>
 
-    <bean id="rabbitPropertiesBean" lazy-init="true" class="com.anwar.RabbitProperties">
+    <bean id="rabbitPropertiesBean" class="com.anwar.RabbitProperties">
         <property name="rabbitHost" value="#{cloudProperties['cloud.services.myrabbit.connection.host']}"/>
-        <property name="rabbitPort" value="#{cloudProperties['cloud.services.myrabbit.connection.port'] == -1 ? 5672 :
-        cloudProperties['cloud.services.myrabbit.connection.port']}"/>
+        <property name="rabbitPort" value="#{cloudProperties['cloud.services.myrabbit.connection.port']}"/>
     </bean>
 </beans>

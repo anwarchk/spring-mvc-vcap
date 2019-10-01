@@ -11,9 +11,9 @@
     <name>Spring MVC VCAP Access</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.12.RELEASE</spring.version>
+        <spring.version>4.3.25.RELEASE</spring.version>
         <java.version>1.8</java.version>
-        <jackson.version>2.9.2</jackson.version>
+        <jackson.version>2.10.0</jackson.version>
     </properties>
 
     <repositories>
@@ -54,13 +54,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>1.2.5.BUILD-SNAPSHOT</version>
+            <version>1.2.9.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-spring-service-connector</artifactId>
-            <version>1.2.4.RELEASE</version>
+            <version>1.2.9.RELEASE</version>
         </dependency>
 
         <dependency>
